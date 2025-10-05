@@ -1,10 +1,8 @@
-version: "3.9"
-
 services:
   mongo:
     image: mongo:6.0
     container_name: quizi-mongo
-    restart: unless-stopped
+    restart: always
     ports:
       - "27017:27017"
     volumes:
@@ -16,14 +14,13 @@ services:
     build:
       context: ./backend
     container_name: quizi-backend
-    restart: unless-stopped
-    environment:
-      - PORT=4000
-      - MONGO_URI=mongodb://mongo:27017
-      - MONGO_DBNAME=quizi
-      - FRONTEND_ORIGIN=http://localhost:4173
+    restart: always
     ports:
       - "4000:4000"
+    environment:
+      - PORT=4000
+      - MONGO_URI=mongodb://mongo:27017/quizi
+      - NODE_ENV=production
     depends_on:
       - mongo
     networks:
@@ -33,19 +30,18 @@ services:
     build:
       context: ./frontend
     container_name: quizi-frontend
-    restart: unless-stopped
-    environment:
-      - VITE_API_BASE=http://backend:4000
+    restart: always
     ports:
       - "4173:4173"
+    environment:
+      - VITE_API_BASE=http://backend:4000
     depends_on:
       - backend
     networks:
       - quizi-network
 
-volumes:
-  mongo-data:
-
 networks:
   quizi-network:
-    driver: bridge
+
+volumes:
+  mongo-data:

@@ -1,23 +1,20 @@
-// backend/routes/api.js
 const express = require("express");
-const fetch = require("node-fetch"); // v2 (2.6.9) works with require(); if using v3+, switch to ESM
+const fetch = require("node-fetch"); 
 const { v4: uuidv4 } = require("uuid");
 const { getDb } = require("../mongo");
 
 const router = express.Router();
 
-const QUIZ_TTL_MS = 30 * 60 * 1000; // 30 minutes
+const QUIZ_TTL_MS = 30 * 60 * 1000; 
 
 function err(res, code, msg) {
   return res.status(code).json({ message: msg });
 }
 function okJSON(res, payload) {
-  // ensure content-type is JSON and send payload
   res.type("application/json");
   return res.json(payload);
 }
 
-// Simple HTML entity decode (same as before)
 function decodeHTMLEntities(str) {
   if (!str || typeof str !== "string") return str;
   return str.replace(/&(#x?[0-9a-fA-F]+|[a-zA-Z]+);/g, (m, ent) => {
@@ -32,7 +29,6 @@ function decodeHTMLEntities(str) {
   });
 }
 
-// Deterministic shuffle (same as previous)
 function seededShuffle(arr, seedStr) {
   const a = arr.slice();
   let seed = 0;
@@ -103,13 +99,12 @@ router.post("/start", async (req, res) => {
       };
     });
 
-    // Persist session in MongoDB
     const db = getDb();
     const sessions = db.collection("sessions");
     const doc = {
       sessionId,
       email,
-      questions: fullQuestions, // server-side: keep correct answers
+      questions: fullQuestions, 
       createdAt: new Date(),
       startedAt,
       expiresAt,
@@ -171,7 +166,6 @@ router.post("/submit", async (req, res) => {
     }
     const expired = new Date(session.expiresAt) < new Date(finalFinishedAt);
 
-    // update doc
     const update = {
       $set: {
         userAnswers: updatedAnswers,
