@@ -1,17 +1,6 @@
-// frontend/src/components/QuestionView.jsx
+
 import React, { useEffect, useRef, useState } from "react";
 import { useQuizStore } from "../store/useQuizStore";
-
-/**
- * Upgraded QuestionView
- * - Clean card layout with question meta (category / difficulty)
- * - Progress indicator (question X / 15) and subtle progress bar
- * - Options rendered as accessible "radio" buttons (aria-checked)
- * - Option letters (A/B/C/...) and hover/focus/selected states
- * - Smooth fade/slide transitions using Tailwind utility classes
- * - Keyboard navigation (arrows + Enter/Space to select)
- * - Marks visited automatically via store.markVisited
- */
 
 const LETTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
@@ -183,7 +172,6 @@ export default function QuestionView({ questionObj, index }) {
                   dangerouslySetInnerHTML={{ __html: c }}
                 />
                 <div className="mt-1 text-xs text-slate-400">
-                  {/* optional meta or hint could go here */}
                 </div>
               </div>
 

@@ -1,4 +1,3 @@
-// frontend/src/pages/QuizPage.jsx
 import React, { useState, useEffect, useRef } from "react";
 import { useQuizStore } from "../store/useQuizStore";
 import { useNavigate } from "react-router-dom";

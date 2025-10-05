@@ -1,14 +1,5 @@
-// frontend/src/components/OverviewPanel.jsx
 import React from "react";
 import { useQuizStore } from "../store/useQuizStore";
-
-/**
- * Upgraded OverviewPanel
- * - More compact grid with tooltips/aria labels
- * - Displays count of attempted / unanswered at top
- * - Color legend and responsive: sidebar on desktop, modal friendly on mobile
- * - Shows current question with ring and subtle scale transform
- */
 
 function StatPill({
   label,

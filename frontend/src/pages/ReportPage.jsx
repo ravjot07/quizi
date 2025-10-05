@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useMemo } from "react";
 import { useParams, Link } from "react-router-dom";
+import { API_BASE } from "../config";
 import {
   PieChart,
   Pie,
@@ -44,8 +45,7 @@ export default function ReportPage() {
       setLoading(true);
       setError(null);
       try {
-        const API_BASE = import.meta.env.VITE_API_BASE || "http://localhost:4000";
-        const res = await fetch(`/api/report/${sessionId}`);
+        const res = await fetch(`${API_BASE}/api/report/${sessionId}`);
         if (!res.ok) throw new Error("Failed to fetch report");
         const data = await res.json();
         setReport(data);

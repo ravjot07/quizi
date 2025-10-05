@@ -90,19 +90,14 @@ export default function StartPage() {
   return (
     <div className="min-h-screen flex items-center justify-center px-4 py-12 bg-gradient-to-b from-indigo-50 via-white to-white">
       <div className="w-full max-w-4xl bg-white rounded-2xl shadow-2xl p-8 md:p-12 relative overflow-hidden border border-slate-100">
-        {/* background accent */}
         <div className="absolute -top-28 -right-28 w-96 h-96 rounded-full bg-indigo-100 opacity-40 blur-3xl pointer-events-none"></div>
 
-        {/* Header */}
         <div className="flex items-center justify-between mb-8">
           <Logo />
-          <div className="hidden sm:block text-xs text-slate-400">
-            © {new Date().getFullYear()} CasualFunnel Project
-          </div>
+          <div className="hidden sm:block text-xs text-slate-400"></div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
-          {/* Left section */}
           <div className="md:col-span-2 space-y-5">
             <h2 className="text-3xl font-semibold text-slate-800 leading-snug">
               Take the{" "}
@@ -146,7 +141,6 @@ export default function StartPage() {
             </p>
           </div>
 
-          {/* Right section - project info */}
           <aside className="bg-slate-50 rounded-xl p-5 border border-slate-100 shadow-inner">
             <h3 className="text-sm font-semibold text-slate-700">
               Project Info
@@ -186,7 +180,7 @@ export default function StartPage() {
         </div>
 
         <footer className="mt-10 text-center text-xs text-slate-400">
-          Built with ❤️ for CasualFunnel — Designed by Ravjot Singh
+          CasualFunnel Assignment — Designed by Ravjot Singh
         </footer>
       </div>
     </div>
